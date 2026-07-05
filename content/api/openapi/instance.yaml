@@ -1,0 +1,207 @@
+openapi: 3.1.0
+info:
+  title: Cubectl Instance API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /instances:
+    get:
+      summary: Получить инстансы
+      tags: [instances]
+      responses:
+        "200":
+          description: Список инстансов
+    post:
+      summary: Создать полный профиль инстанса
+      tags: [instances]
+      responses:
+        "201":
+          description: Инстанс создан
+  /instances/{instance_id}:
+    get:
+      summary: Получить инстанс
+      tags: [instances]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Инстанс
+    patch:
+      summary: Обновить инстанс
+      tags: [instances]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Инстанс обновлен
+    delete:
+      summary: Удалить инстанс
+      tags: [instances]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Инстанс удален
+  /instances/{instance_id}/start:
+    post:
+      summary: Запустить инстанс или создать контейнер перед запуском
+      tags: [instance-lifecycle]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Upsert-запуск принят
+  /instances/{instance_id}/stop:
+    post:
+      summary: Остановить инстанс
+      tags: [instance-lifecycle]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Остановка принята
+  /instances/{instance_id}/restart:
+    post:
+      summary: Перезапустить инстанс
+      tags: [instance-lifecycle]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Перезапуск принят
+  /instances/{instance_id}/content:
+    get:
+      summary: Получить выбранный контент инстанса
+      tags: [instance-content]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Контент инстанса
+    patch:
+      summary: Обновить выбранный контент инстанса
+      tags: [instance-content]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Контент обновлен
+  /instances/{instance_id}/members:
+    get:
+      summary: Получить участников инстанса
+      tags: [instance-members]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Участники инстанса
+    post:
+      summary: Добавить участника инстанса
+      tags: [instance-members]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: Участник добавлен
+  /instances/{instance_id}/members/{user_id}:
+    patch:
+      summary: Обновить роль участника инстанса
+      tags: [instance-members]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Участник обновлен
+    delete:
+      summary: Удалить участника инстанса
+      tags: [instance-members]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Участник удален
+  /instances/{instance_id}/logs/live:
+    get:
+      summary: Открыть SSE-поток живых Docker-логов
+      tags: [instance-logs]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: SSE-поток логов
+  /admin/resources:
+    get:
+      summary: Получить ресурсные ограничения
+      tags: [admin-resources]
+      responses:
+        "200":
+          description: Ресурсные ограничения
+    patch:
+      summary: Обновить ресурсные ограничения
+      tags: [admin-resources]
+      responses:
+        "200":
+          description: Ресурсные ограничения обновлены

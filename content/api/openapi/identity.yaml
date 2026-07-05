@@ -1,0 +1,186 @@
+openapi: 3.1.0
+info:
+  title: Cubectl Identity API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /auth/register:
+    post:
+      summary: Зарегистрировать пользователя
+      tags: [auth]
+      responses:
+        "201":
+          description: Пользователь зарегистрирован
+  /auth/login:
+    post:
+      summary: Выполнить вход и получить JWT
+      tags: [auth]
+      responses:
+        "200":
+          description: JWT выдан
+  /auth/logout:
+    post:
+      summary: Выполнить выход
+      tags: [auth]
+      responses:
+        "204":
+          description: Выход выполнен
+  /auth/refresh:
+    post:
+      summary: Обновить JWT
+      tags: [auth]
+      responses:
+        "200":
+          description: JWT обновлен
+  /auth/me:
+    get:
+      summary: Получить текущего пользователя
+      tags: [auth]
+      responses:
+        "200":
+          description: Текущий пользователь
+  /users:
+    get:
+      summary: Получить пользователей
+      tags: [users]
+      responses:
+        "200":
+          description: Список пользователей
+  /users/{user_id}:
+    get:
+      summary: Получить пользователя
+      tags: [users]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Пользователь
+    patch:
+      summary: Обновить пользователя
+      tags: [users]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Пользователь обновлен
+    delete:
+      summary: Удалить пользователя
+      tags: [users]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Пользователь удален
+  /roles:
+    get:
+      summary: Получить роли
+      tags: [roles]
+      responses:
+        "200":
+          description: Список ролей
+    post:
+      summary: Создать роль
+      tags: [roles]
+      responses:
+        "201":
+          description: Роль создана
+  /roles/{role_id}:
+    get:
+      summary: Получить роль
+      tags: [roles]
+      parameters:
+        - name: role_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Роль
+    patch:
+      summary: Обновить роль
+      tags: [roles]
+      parameters:
+        - name: role_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Роль обновлена
+    delete:
+      summary: Удалить роль
+      tags: [roles]
+      parameters:
+        - name: role_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Роль удалена
+  /permissions:
+    get:
+      summary: Получить permissions
+      tags: [permissions]
+      responses:
+        "200":
+          description: Список permissions
+  /users/{user_id}/roles:
+    get:
+      summary: Получить роли пользователя
+      tags: [user-roles]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Роли пользователя
+    post:
+      summary: Назначить роль пользователю
+      tags: [user-roles]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: Роль назначена
+  /users/{user_id}/roles/{role_id}:
+    delete:
+      summary: Снять роль с пользователя
+      tags: [user-roles]
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: role_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Роль снята

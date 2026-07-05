@@ -1,0 +1,60 @@
+site_name: Cubectl Documentation
+site_url: https://cubectlmc.github.io/docs/
+repo_url: https://github.com/CubectlMC/docs
+repo_name: CubectlMC/docs
+docs_dir: content
+
+theme:
+  name: material
+  language: ru
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+
+nav:
+  - Главная: index.md
+  - RFC:
+      - Архитектура: rfc/architecture.md
+  - Архитектура:
+      - Микросервисы: architecture/services.md
+      - Пакеты: architecture/packages.md
+      - Данные и PostgreSQL: architecture/data.md
+      - Безопасность: architecture/security.md
+      - Docker: architecture/docker.md
+      - DNS: architecture/dns.md
+      - Файлы и каталоги: architecture/files.md
+      - Метрики и логи: architecture/observability.md
+  - Базы данных:
+      - Обзор: database/index.md
+      - Identity: database/identity.md
+      - Instance: database/instance.md
+      - File: database/file.md
+      - Metric: database/metric.md
+      - ER-диаграмма: database/schema.mmd
+  - API:
+      - Endpoints: api/endpoints.md
+      - OpenAPI: api/openapi/index.md
+  - UI:
+      - Экраны: ui/screens.md
+  - Диаграммы:
+      - Взаимодействие сервисов: diagrams/service-interaction.puml
+      - Установка мода: diagrams/mod-installation.puml
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: true

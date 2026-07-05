@@ -1,0 +1,224 @@
+openapi: 3.1.0
+info:
+  title: Cubectl File API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /mods/search:
+    get:
+      summary: Найти моды
+      tags: [mods]
+      responses:
+        "200":
+          description: Результаты поиска модов
+  /mods/{mod_id}:
+    get:
+      summary: Получить мод
+      tags: [mods]
+      parameters:
+        - name: mod_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Мод
+  /mods/{mod_id}/versions:
+    get:
+      summary: Получить версии мода
+      tags: [mods]
+      parameters:
+        - name: mod_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версии мода
+  /mods/{mod_id}/versions/{version_id}:
+    get:
+      summary: Получить версию мода
+      tags: [mods]
+      parameters:
+        - name: mod_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: version_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версия мода
+  /plugins/search:
+    get:
+      summary: Найти плагины
+      tags: [plugins]
+      responses:
+        "200":
+          description: Результаты поиска плагинов
+  /plugins/{plugin_id}:
+    get:
+      summary: Получить плагин
+      tags: [plugins]
+      parameters:
+        - name: plugin_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Плагин
+  /plugins/{plugin_id}/versions:
+    get:
+      summary: Получить версии плагина
+      tags: [plugins]
+      parameters:
+        - name: plugin_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версии плагина
+  /plugins/{plugin_id}/versions/{version_id}:
+    get:
+      summary: Получить версию плагина
+      tags: [plugins]
+      parameters:
+        - name: plugin_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: version_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версия плагина
+  /datapacks/search:
+    get:
+      summary: Найти дата-паки
+      tags: [datapacks]
+      responses:
+        "200":
+          description: Результаты поиска дата-паков
+  /datapacks/{datapack_id}:
+    get:
+      summary: Получить дата-пак
+      tags: [datapacks]
+      parameters:
+        - name: datapack_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Дата-пак
+  /datapacks/{datapack_id}/versions:
+    get:
+      summary: Получить версии дата-пака
+      tags: [datapacks]
+      parameters:
+        - name: datapack_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версии дата-пака
+  /datapacks/{datapack_id}/versions/{version_id}:
+    get:
+      summary: Получить версию дата-пака
+      tags: [datapacks]
+      parameters:
+        - name: datapack_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: version_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Версия дата-пака
+  /content-providers:
+    get:
+      summary: Получить провайдеры контента
+      tags: [content-providers]
+      responses:
+        "200":
+          description: Провайдеры контента
+  /content-providers/{provider_id}/status:
+    get:
+      summary: Получить статус провайдера контента
+      tags: [content-providers]
+      parameters:
+        - name: provider_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Статус провайдера
+  /instances/{instance_id}/content/updates:
+    get:
+      summary: Получить доступные обновления контента инстанса
+      tags: [content-updates]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Доступные обновления
+  /instances/{instance_id}/content/updates/check:
+    post:
+      summary: Запустить проверку обновлений контента
+      tags: [content-updates]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Проверка обновлений запущена
+  /instances/{instance_id}/content/updates/{update_id}/apply:
+    post:
+      summary: Применить обновление контента
+      tags: [content-updates]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: update_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Обновление принято

@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Cubectl Metric API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /instances/{instance_id}/metrics/current:
+    get:
+      summary: Получить текущие метрики инстанса
+      tags: [instance-metrics]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Текущие метрики инстанса
+  /instances/{instance_id}/metrics/history:
+    get:
+      summary: Получить исторические метрики инстанса
+      tags: [instance-metrics]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Исторические метрики инстанса
+  /instances/{instance_id}/metrics/live:
+    get:
+      summary: Открыть SSE-поток метрик инстанса
+      tags: [instance-metrics]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: SSE-поток метрик инстанса
+  /metrics/host/current:
+    get:
+      summary: Получить текущие метрики хоста
+      tags: [host-metrics]
+      responses:
+        "200":
+          description: Текущие метрики хоста
+  /metrics/host/history:
+    get:
+      summary: Получить исторические метрики хоста
+      tags: [host-metrics]
+      responses:
+        "200":
+          description: Исторические метрики хоста
+  /metrics/host/live:
+    get:
+      summary: Открыть SSE-поток метрик хоста
+      tags: [host-metrics]
+      responses:
+        "200":
+          description: SSE-поток метрик хоста

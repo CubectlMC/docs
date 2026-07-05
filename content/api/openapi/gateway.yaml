@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: Cubectl Gateway API
+  version: 0.1.0
+servers:
+  - url: /api/v1
+paths:
+  /health:
+    get:
+      summary: Проверить доступность gateway
+      tags: [gateway]
+      responses:
+        "200":
+          description: Gateway доступен
+  /status:
+    get:
+      summary: Получить статус gateway
+      tags: [gateway]
+      responses:
+        "200":
+          description: Статус gateway
+  /version:
+    get:
+      summary: Получить версию gateway
+      tags: [gateway]
+      responses:
+        "200":
+          description: Версия gateway
