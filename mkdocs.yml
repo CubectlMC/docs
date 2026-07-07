@@ -35,6 +35,11 @@ nav:
   - API:
       - Endpoints: api/endpoints.md
       - OpenAPI: api/openapi/index.md
+      - Redoc:
+          - Gateway: api/redoc/gateway.md
+          - Identity: api/redoc/identity.md
+          - Instance: api/redoc/instance.md
+          - File: api/redoc/file.md
   - UI:
       - Экраны: ui/screens.md
   - Future:
@@ -45,6 +50,7 @@ nav:
 
 plugins:
   - search
+  - redoc-tag
   - plantuml:
       puml_url: https://www.plantuml.com/plantuml/
 

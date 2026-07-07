@@ -23,6 +23,13 @@ Base path: `/api/v1`
 - [Instance-service](instance.yaml)
 - [File-service](file.yaml)
 
+## Redoc
+
+- [Gateway Redoc](../redoc/gateway.md)
+- [Identity Redoc](../redoc/identity.md)
+- [Instance Redoc](../redoc/instance.md)
+- [File Redoc](../redoc/file.md)
+
 ## Правила именования
 
 - URI строятся от ресурсов
