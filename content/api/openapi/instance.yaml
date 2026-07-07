@@ -192,6 +192,19 @@ paths:
       responses:
         "200":
           description: SSE-поток логов
+  /instances/{instance_id}/runtime:
+    get:
+      summary: Получить runtime-информацию инстанса
+      tags: [instance-runtime]
+      parameters:
+        - name: instance_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Runtime-информация инстанса
   /admin/resources:
     get:
       summary: Получить ресурсные ограничения

@@ -9,14 +9,15 @@ participant "Web-интерфейс" as UI
 participant "gateway" as Gateway
 participant "identity-service" as Identity
 participant "instance-service" as Instance
+participant "runtime-monitor" as Monitor
 participant "file-service" as File
-participant "metric-service" as Metric
 participant "Docker Engine API" as Docker
 database "PostgreSQL\nнесколько баз" as Postgres
+database "Redis" as Redis
 collections "Host storage" as Storage
 
 User -> UI: действие в web-интерфейсе
-UI -> Gateway: HTTPS REST / SSE
+UI -> Gateway: HTTPS REST
 Gateway -> Identity: проверка JWT и permissions
 Identity -> Postgres: чтение пользователей и прав
 Identity --> Gateway: контекст пользователя
@@ -25,13 +26,14 @@ Gateway -> Instance: операции с инстансами
 Instance -> Postgres: состояние инстанса
 Instance -> Docker: lifecycle контейнера
 
+Monitor -> Docker: stats / inspect раз в 15 секунд
+Monitor -> Redis: runtime:instance:{instanceId}
+Gateway -> Instance: GET /instances/{id}/runtime
+Instance -> Redis: чтение runtime snapshot
+Instance --> Gateway: runtime snapshot
+
 Gateway -> File: операции с каталогом контента
 File -> Storage: чтение и запись файлов
 File -> Postgres: metadata и хеши
-
-Gateway -> Metric: текущий snapshot и живые метрики
-Metric -> Docker: stats / inspect
-Metric -> Postgres: снимок каждые 15 секунд
-Metric --> Gateway: REST current / SSE live
 @enduml
 ```

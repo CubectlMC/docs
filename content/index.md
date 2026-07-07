@@ -11,7 +11,7 @@
 - [Безопасность и доступы](architecture/security.md)
 - [Docker-среда](architecture/docker.md)
 - [Файлы и внешние каталоги](architecture/files.md)
-- [Метрики и логи](architecture/observability.md)
+- [Runtime и логи](architecture/observability.md)
 - [Экраны web-интерфейса](ui/screens.md)
 - [API endpoints](api/endpoints.md)
 - [OpenAPI](api/openapi/index.md)

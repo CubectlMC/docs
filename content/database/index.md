@@ -5,7 +5,6 @@
 - [Identity database](identity.md)
 - [Instance database](instance.md)
 - [File database](file.md)
-- [Metric database](metric.md)
 - [ER-диаграмма](schema.md)
 
 ## Общий подход
@@ -17,7 +16,6 @@
 - `cubectl_identity`
 - `cubectl_instance`
 - `cubectl_file`
-- `cubectl_metric`
 
 Каждый сервис подключается только к своей базе данных
 
@@ -28,6 +26,18 @@
 ER-диаграмма показывает логические связи между сервисными базами
 
 Физические foreign key создаются только внутри одной базы сервиса
+
+## Redis
+
+Redis используется только для временного runtime-состояния
+
+Ключи:
+
+- `runtime:instance:{instanceId}`
+
+TTL:
+
+- От 60 до 120 секунд
 
 ## Общие поля
 

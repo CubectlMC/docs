@@ -43,6 +43,7 @@ org.cubectl.instance
   member
   lifecycle
   docker
+  runtimemonitor
   runtime
   java
   port
@@ -73,21 +74,6 @@ org.cubectl.file
       mapper
       service
   resolver
-  security
-  errors
-  config
-```
-
-## metric-service
-
-```text
-org.cubectl.metric
-  snapshot
-  collector
-  docker
-  host
-  stream
-  alert
   security
   errors
   config

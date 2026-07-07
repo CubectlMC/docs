@@ -8,7 +8,6 @@ Base path: `/api/v1`
 - `identity-service`
 - `instance-service`
 - `file-service`
-- `metric-service`
 
 ## Пакеты
 
@@ -16,7 +15,6 @@ Base path: `/api/v1`
 - `org.cubectl.identity`
 - `org.cubectl.instance`
 - `org.cubectl.file`
-- `org.cubectl.metric`
 
 ## Контракты
 
@@ -24,7 +22,6 @@ Base path: `/api/v1`
 - [Identity-service](identity.yaml)
 - [Instance-service](instance.yaml)
 - [File-service](file.yaml)
-- [Metric-service](metric.yaml)
 
 ## Правила именования
 

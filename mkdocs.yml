@@ -25,13 +25,12 @@ nav:
       - Безопасность: architecture/security.md
       - Docker: architecture/docker.md
       - Файлы и каталоги: architecture/files.md
-      - Метрики и логи: architecture/observability.md
+      - Runtime и логи: architecture/observability.md
   - Базы данных:
       - Обзор: database/index.md
       - Identity: database/identity.md
       - Instance: database/instance.md
       - File: database/file.md
-      - Metric: database/metric.md
       - ER-диаграмма: database/schema.md
   - API:
       - Endpoints: api/endpoints.md

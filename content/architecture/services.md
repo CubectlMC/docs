@@ -7,7 +7,7 @@
 Ответственность:
 
 - Единая входная точка для web-интерфейса
-- Маршрутизация запросов к `identity-service`, `instance-service`, `file-service`, `metric-service`
+- Маршрутизация запросов к `identity-service`, `instance-service`, `file-service`
 - CORS
 - Ограничение частоты запросов
 - Проверка JWT на входе
@@ -59,6 +59,8 @@ Email, email-верификация, OAuth2 и внешние провайдер
 - Лимиты CPU/RAM
 - Живые Docker-логи через SSE
 - Отображение IP и публичного порта
+- Runtime-monitor
+- `GET /instances/{instance_id}/runtime`
 
 DNS не входит в MVP
 
@@ -82,23 +84,23 @@ DNS не входит в MVP
 
 Generic file upload не входит в MVP
 
-## metric-service
+## runtime-monitor
 
-Пакет: `org.cubectl.metric`
+Runtime-monitor является частью `instance-service`
 
 Ответственность:
 
+- Опрос Docker API раз в 15 секунд
+- Сбор status
 - Сбор CPU
 - Сбор RAM
-- Disk usage
-- Network usage
-- Uptime
-- Текущие метрики инстанса
-- Live-метрики инстанса через SSE
-- Текущие метрики хоста
-- Live-метрики хоста через SSE
-- Запись снимков метрик в PostgreSQL каждые 15 секунд
+- Сбор network
+- Запись последнего snapshot в Redis
+- TTL ключей от 60 до 120 секунд
+- Чтение snapshot для `GET /instances/{instance_id}/runtime`
 
-MVP не строит графики
+PostgreSQL для runtime-состояния не используется
 
-Metric-service отдает текущую runtime-информацию максимально простым способом через REST и SSE
+Отдельный микросервис метрик не входит в MVP
+
+Позже runtime-monitor можно вынести в отдельный observability microservice с Grafana dashboards поверх Docker metrics

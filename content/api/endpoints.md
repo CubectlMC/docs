@@ -59,6 +59,7 @@ PATCH  /instances/{instance_id}/members/{user_id}
 DELETE /instances/{instance_id}/members/{user_id}
 
 GET    /instances/{instance_id}/logs/live
+GET    /instances/{instance_id}/runtime
 
 GET    /admin/resources
 PATCH  /admin/resources
@@ -90,16 +91,6 @@ POST /instances/{instance_id}/content/updates/check
 POST /instances/{instance_id}/content/updates/{update_id}/apply
 ```
 
-## metric-service
-
-```text
-GET /instances/{instance_id}/metrics/current
-GET /instances/{instance_id}/metrics/live
-
-GET /metrics/host/current
-GET /metrics/host/live
-```
-
 ## Исключено из MVP
 
 - `/auth/sessions`
@@ -110,7 +101,11 @@ GET /metrics/host/live
 - `/instances/{instance_id}/server-properties`
 - `/instances/{instance_id}/dns-records`
 - `/instances/{instance_id}/metrics/history`
+- `/instances/{instance_id}/metrics/current`
+- `/instances/{instance_id}/metrics/live`
 - `/metrics/host/history`
+- `/metrics/host/current`
+- `/metrics/host/live`
 - `/instances/{instance_id}/files`
 - `/instances/{instance_id}/mods`
 - `/instances/{instance_id}/plugins`

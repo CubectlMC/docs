@@ -23,9 +23,6 @@ erDiagram
     FILE_CONTENT_VERSIONS ||--o{ FILE_CONTENT_UPDATE_CHECKS : current_version
     FILE_CONTENT_UPDATE_CHECKS ||--o{ FILE_CONTENT_UPDATE_ACTIONS : creates
 
-    INSTANCE_INSTANCES ||--o{ METRIC_INSTANCE_SNAPSHOTS : measured_by
-    METRIC_COLLECTION_RUNS ||--o{ METRIC_INSTANCE_SNAPSHOTS : collects
-    METRIC_COLLECTION_RUNS ||--o{ METRIC_HOST_SNAPSHOTS : collects
 
     IDENTITY_USERS {
         uuid id PK
@@ -205,33 +202,4 @@ erDiagram
         uuid from_version_id FK
         uuid to_version_id FK
         varchar status
-    }
-
-    METRIC_INSTANCE_SNAPSHOTS {
-        uuid id PK
-        uuid collection_run_id FK
-        uuid instance_id
-        timestamptz captured_at
-        varchar container_status
-        numeric cpu_percent
-        integer memory_usage_mb
-        integer memory_limit_mb
-    }
-
-    METRIC_HOST_SNAPSHOTS {
-        uuid id PK
-        uuid collection_run_id FK
-        timestamptz captured_at
-        numeric cpu_percent
-        integer memory_total_mb
-        integer memory_used_mb
-        integer running_instances
-    }
-
-    METRIC_COLLECTION_RUNS {
-        uuid id PK
-        timestamptz started_at
-        timestamptz finished_at
-        varchar status
-        integer instances_collected
     }

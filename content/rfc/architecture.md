@@ -10,9 +10,9 @@
 - [Данные](#_6)
 - [Docker](#docker)
 - [Файлы](#_7)
-- [Метрики и логи](#_8)
+- [Runtime и логи](#runtime)
 - [Web-интерфейс](#web-)
-- [Документация](#_9)
+- [Документация](#_8)
 
 ## Цель
 
@@ -30,7 +30,6 @@ Runtime-сервисы:
 - `identity-service`
 - `instance-service`
 - `file-service`
-- `metric-service`
 
 Документационный модуль:
 
@@ -42,7 +41,6 @@ Java/Kotlin-пакеты сервисов должны начинаться с `
 - `org.cubectl.identity`
 - `org.cubectl.instance`
 - `org.cubectl.file`
-- `org.cubectl.metric`
 
 ## Сервисы
 
@@ -70,9 +68,11 @@ OAuth2-интеграции не входят в текущую архитект
 
 ## Данные
 
-Для всех сервисов поднимается один контейнер PostgreSQL
+Для постоянных данных поднимается один контейнер PostgreSQL
 
-Внутри контейнера создаются отдельные базы данных для сервисов
+Внутри контейнера создаются отдельные базы данных для `identity-service`, `instance-service` и `file-service`
+
+Для временного runtime-состояния используется Redis
 
 ## Docker
 
@@ -88,13 +88,15 @@ OAuth2-интеграции не входят в текущую архитект
 
 Generic file upload не входит в MVP
 
-## Метрики и логи
+## Runtime и логи
 
-`metric-service` каждые 15 секунд собирает текущую runtime-информацию и пишет снимки в PostgreSQL
+Runtime-monitor внутри `instance-service` каждые 15 секунд собирает текущую runtime-информацию и пишет последний snapshot в Redis
 
 В MVP web-интерфейс показывает текущие значения без графиков
 
-Живые runtime-обновления и живые Docker-логи отдаются через SSE
+Runtime-информация читается через `GET /instances/{instance_id}/runtime`
+
+UI опрашивает runtime endpoint раз в 15 секунд
 
 ## Web-интерфейс
 
