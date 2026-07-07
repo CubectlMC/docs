@@ -47,9 +47,6 @@ org.cubectl.instance
   java
   port
   resource
-  dns
-    provider
-    regru
   logs
   security
   errors
@@ -89,7 +86,6 @@ org.cubectl.metric
   collector
   docker
   host
-  history
   stream
   alert
   security

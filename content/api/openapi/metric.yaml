@@ -7,7 +7,7 @@ servers:
 paths:
   /instances/{instance_id}/metrics/current:
     get:
-      summary: Получить текущие метрики инстанса
+      summary: Получить текущую runtime-информацию инстанса
       tags: [instance-metrics]
       parameters:
         - name: instance_id
@@ -17,23 +17,10 @@ paths:
             type: string
       responses:
         "200":
-          description: Текущие метрики инстанса
-  /instances/{instance_id}/metrics/history:
-    get:
-      summary: Получить исторические метрики инстанса
-      tags: [instance-metrics]
-      parameters:
-        - name: instance_id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Исторические метрики инстанса
+          description: Текущая runtime-информация инстанса
   /instances/{instance_id}/metrics/live:
     get:
-      summary: Открыть SSE-поток метрик инстанса
+      summary: Открыть SSE-поток runtime-информации инстанса
       tags: [instance-metrics]
       parameters:
         - name: instance_id
@@ -43,25 +30,18 @@ paths:
             type: string
       responses:
         "200":
-          description: SSE-поток метрик инстанса
+          description: SSE-поток runtime-информации инстанса
   /metrics/host/current:
     get:
-      summary: Получить текущие метрики хоста
+      summary: Получить текущую runtime-информацию хоста
       tags: [host-metrics]
       responses:
         "200":
-          description: Текущие метрики хоста
-  /metrics/host/history:
-    get:
-      summary: Получить исторические метрики хоста
-      tags: [host-metrics]
-      responses:
-        "200":
-          description: Исторические метрики хоста
+          description: Текущая runtime-информация хоста
   /metrics/host/live:
     get:
-      summary: Открыть SSE-поток метрик хоста
+      summary: Открыть SSE-поток runtime-информации хоста
       tags: [host-metrics]
       responses:
         "200":
-          description: SSE-поток метрик хоста
+          description: SSE-поток runtime-информации хоста

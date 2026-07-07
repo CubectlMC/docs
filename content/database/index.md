@@ -6,7 +6,7 @@
 - [Instance database](instance.md)
 - [File database](file.md)
 - [Metric database](metric.md)
-- [ER-диаграмма](schema.mmd)
+- [ER-диаграмма](schema.md)
 
 ## Общий подход
 

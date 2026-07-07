@@ -4,7 +4,7 @@
 
 ## Назначение
 
-`instance-service` хранит профиль инстанса, lifecycle, runtime config, ports, DNS state, resource limits, selected content и instance-level access
+`instance-service` хранит профиль инстанса, lifecycle, runtime config, ports, resource limits, selected content и instance-level access
 
 ## Таблицы
 
@@ -58,8 +58,7 @@
 - `instance_id uuid primary key`
 - `public_port integer unique not null`
 - `container_port integer not null`
-- `dns_name varchar`
-- `dns_mode varchar not null`
+- `public_host varchar not null`
 - `created_at timestamptz not null`
 - `updated_at timestamptz not null`
 
@@ -96,27 +95,6 @@
 - `image varchar not null`
 - `status varchar not null`
 - `last_seen_at timestamptz`
-- `created_at timestamptz not null`
-- `updated_at timestamptz not null`
-
-Ограничения:
-
-- `foreign key (instance_id) references instances(id)`
-
-### dns_records
-
-Хранит DNS-записи инстанса
-
-Поля:
-
-- `id uuid primary key`
-- `instance_id uuid not null`
-- `provider varchar not null`
-- `record_type varchar not null`
-- `record_name varchar not null`
-- `record_value varchar not null`
-- `provider_record_id varchar`
-- `status varchar not null`
 - `created_at timestamptz not null`
 - `updated_at timestamptz not null`
 
@@ -207,7 +185,6 @@
 - `instances_status_idx`
 - `instance_networks_public_port_idx`
 - `docker_containers_instance_id_idx`
-- `dns_records_instance_id_idx`
 - `instance_content_instance_id_idx`
 - `instance_content_provider_project_version_idx`
 - `instance_events_instance_id_created_at_idx`

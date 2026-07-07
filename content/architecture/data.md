@@ -32,7 +32,6 @@
 - Инстансами
 - Конфигурацией среды выполнения
 - Портами
-- DNS state
 - Lifecycle events
 - Resource limits
 - Instance-level access

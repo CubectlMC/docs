@@ -1,3 +1,6 @@
+# Взаимодействие сервисов
+
+```puml
 @startuml
 title Cubectl - взаимодействие сервисов
 
@@ -21,6 +24,7 @@ Identity --> Gateway: контекст пользователя
 Gateway -> Instance: операции с инстансами
 Instance -> Postgres: состояние инстанса
 Instance -> Docker: lifecycle контейнера
+
 Gateway -> File: операции с каталогом контента
 File -> Storage: чтение и запись файлов
 File -> Postgres: metadata и хеши
@@ -30,3 +34,4 @@ Metric -> Docker: stats / inspect
 Metric -> Postgres: снимок каждые 15 секунд
 Metric --> Gateway: REST current / SSE live
 @enduml
+```

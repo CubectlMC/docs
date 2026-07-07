@@ -17,13 +17,13 @@ nav:
   - Главная: index.md
   - RFC:
       - Архитектура: rfc/architecture.md
+      - MVP: rfc/mvp.md
   - Архитектура:
       - Микросервисы: architecture/services.md
       - Пакеты: architecture/packages.md
       - Данные и PostgreSQL: architecture/data.md
       - Безопасность: architecture/security.md
       - Docker: architecture/docker.md
-      - DNS: architecture/dns.md
       - Файлы и каталоги: architecture/files.md
       - Метрики и логи: architecture/observability.md
   - Базы данных:
@@ -32,18 +32,22 @@ nav:
       - Instance: database/instance.md
       - File: database/file.md
       - Metric: database/metric.md
-      - ER-диаграмма: database/schema.mmd
+      - ER-диаграмма: database/schema.md
   - API:
       - Endpoints: api/endpoints.md
       - OpenAPI: api/openapi/index.md
   - UI:
       - Экраны: ui/screens.md
+  - Future:
+      - DNS: architecture/dns.md
   - Диаграммы:
-      - Взаимодействие сервисов: diagrams/service-interaction.puml
-      - Установка мода: diagrams/mod-installation.puml
+      - Взаимодействие сервисов: diagrams/service-interaction.md
+      - Установка мода: diagrams/mod-installation.md
 
 plugins:
   - search
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/
 
 markdown_extensions:
   - admonition

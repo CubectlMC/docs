@@ -94,11 +94,9 @@ POST /instances/{instance_id}/content/updates/{update_id}/apply
 
 ```text
 GET /instances/{instance_id}/metrics/current
-GET /instances/{instance_id}/metrics/history
 GET /instances/{instance_id}/metrics/live
 
 GET /metrics/host/current
-GET /metrics/host/history
 GET /metrics/host/live
 ```
 
@@ -111,6 +109,8 @@ GET /metrics/host/live
 - `/instances/{instance_id}/commands`
 - `/instances/{instance_id}/server-properties`
 - `/instances/{instance_id}/dns-records`
+- `/instances/{instance_id}/metrics/history`
+- `/metrics/host/history`
 - `/instances/{instance_id}/files`
 - `/instances/{instance_id}/mods`
 - `/instances/{instance_id}/plugins`

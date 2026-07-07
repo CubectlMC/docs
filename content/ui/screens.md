@@ -48,7 +48,7 @@
 - Selected mods
 - Selected plugins
 - Selected datapacks
-- Network и DNS settings
+- IP и публичный порт
 - Mounted `/data` directory
 - Docker container
 - Optional start after create
@@ -101,17 +101,16 @@
 
 Содержит:
 
-- Текущие метрики инстанса
-- Исторические метрики инстанса
-- Live-метрики инстанса через SSE
-- Текущие метрики хоста
-- Исторические метрики хоста
-- Live-метрики хоста через SSE
+- Текущую runtime-информацию инстанса
+- Live-обновления через SSE
+- Текущую runtime-информацию хоста
 - CPU
 - RAM
 - Disk
 - Network
 - Uptime
+
+Графики не входят в MVP
 
 ## Логи
 

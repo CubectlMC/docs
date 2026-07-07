@@ -1,3 +1,6 @@
+# ER-диаграмма
+
+```mermaid
 erDiagram
     IDENTITY_USERS ||--o{ IDENTITY_USER_ROLES : has
     IDENTITY_ROLES ||--o{ IDENTITY_USER_ROLES : assigned
@@ -235,3 +238,4 @@ erDiagram
         varchar status
         integer instances_collected
     }
+```
